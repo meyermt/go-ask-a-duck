@@ -21,9 +21,11 @@ class SharedNetworking {
         
         let session = URLSession.shared
         
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         let task = session.dataTask(with: duckQueryUrl as URL, completionHandler: { (data, response, error) -> Void in
             
-            print("Response: \(String(describing: response))")
+            // print("Response: \(String(describing: response))")
             
             guard ((response as! HTTPURLResponse).statusCode == 200) else {
                 fatalError("Received bad response from server")
@@ -59,6 +61,7 @@ class SharedNetworking {
                 fatalError("error serializing JSON: \(error)")
             }
         })
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         task.resume()
     }
     

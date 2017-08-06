@@ -17,6 +17,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
 
     var detailViewController: DetailViewController? = nil
     var objects = [[String:String]]()
+    let userDefaults = UserDefaults.standard
     
     // MARK: Actions
     
@@ -24,18 +25,26 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        navigationItem.leftBarButtonItem = editButtonItem
 
-        //let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        //navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+            self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         searchBar.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
+        if let query = userDefaults.value(forKey: "lastQuery") as! String! {
+            searchBar.text = query
+        } else {
+            searchBar.text = "apple"
+        }
+        guard let searchText = searchBar.text, !searchText.isEmpty else { return }
+        searchFor(searchText)
+        if let lastSearchURL = userDefaults.value(forKey: "lastSearch") as! String! {
+            detailViewController?.detailItem = lastSearchURL
+        } else {
+            detailViewController?.detailItem = "https://duckduckgo.com/Apple"
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -48,20 +57,14 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-//    func insertNewObject(_ sender: Any) {
-//        objects.insert(NSDate(), at: 0)
-//        let indexPath = IndexPath(row: 0, section: 0)
-//        tableView.insertRows(at: [indexPath], with: .automatic)
-//    }
-
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                let object = objects[indexPath.row] 
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                controller.detailItem = object["FirstURL"]
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -93,20 +96,6 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         
         return cell
     }
-
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        // Return false if you do not want the specified item to be editable.
-//        return true
-//    }
-
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            objects.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        } else if editingStyle == .insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-//        }
-//    }
     
     // MARK: Search Bar Delegate Methods
     
@@ -114,9 +103,11 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyboard()
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         searchFor(searchText)
+        userDefaults.set(searchText, forKey: "lastQuery")
     }
+    
+    
     
     // MARK: Private methods
     
@@ -125,8 +116,6 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
             //update some view here
             objects = results
             self.tableView.reloadData()
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-
         }
         
         SharedNetworking.sharedInstance.searchDuck(query: query, completion: populateSearchResults(_:))

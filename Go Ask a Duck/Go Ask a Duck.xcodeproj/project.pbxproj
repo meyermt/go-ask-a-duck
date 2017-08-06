@@ -15,6 +15,8 @@
 		B3FED5E81F3405E700BB12F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3FED5E61F3405E700BB12F9 /* LaunchScreen.storyboard */; };
 		B3FED5F01F3410F000BB12F9 /* SharedNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FED5EF1F3410F000BB12F9 /* SharedNetworking.swift */; };
 		B3FED5F21F3424C400BB12F9 /* DuckResponseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FED5F11F3424C400BB12F9 /* DuckResponseTableViewCell.swift */; };
+		B3FED6161F36B18200BB12F9 /* DetailBookmarkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FED6151F36B18200BB12F9 /* DetailBookmarkDelegate.swift */; };
+		B3FED6181F36B68100BB12F9 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FED6171F36B68100BB12F9 /* BookMarkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		B3FED5E91F3405E700BB12F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3FED5EF1F3410F000BB12F9 /* SharedNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedNetworking.swift; sourceTree = "<group>"; };
 		B3FED5F11F3424C400BB12F9 /* DuckResponseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuckResponseTableViewCell.swift; sourceTree = "<group>"; };
+		B3FED6151F36B18200BB12F9 /* DetailBookmarkDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBookmarkDelegate.swift; sourceTree = "<group>"; };
+		B3FED6171F36B68100BB12F9 /* BookMarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				B3FED5E61F3405E700BB12F9 /* LaunchScreen.storyboard */,
 				B3FED5E91F3405E700BB12F9 /* Info.plist */,
 				B3FED5EF1F3410F000BB12F9 /* SharedNetworking.swift */,
+				B3FED6151F36B18200BB12F9 /* DetailBookmarkDelegate.swift */,
+				B3FED6171F36B68100BB12F9 /* BookMarkViewController.swift */,
 			);
 			path = "Go Ask a Duck";
 			sourceTree = "<group>";
@@ -146,6 +152,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3FED6161F36B18200BB12F9 /* DetailBookmarkDelegate.swift in Sources */,
+				B3FED6181F36B68100BB12F9 /* BookMarkViewController.swift in Sources */,
 				B3FED5F21F3424C400BB12F9 /* DuckResponseTableViewCell.swift in Sources */,
 				B3FED5F01F3410F000BB12F9 /* SharedNetworking.swift in Sources */,
 				B3FED5E01F3405E700BB12F9 /* DetailViewController.swift in Sources */,
@@ -318,6 +326,7 @@
 				B3FED5EE1F3405E700BB12F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
