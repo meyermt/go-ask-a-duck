@@ -57,6 +57,8 @@ class BookMarkViewController: UIViewController, UITableViewDelegate, UITableView
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
         cell.textLabel!.text = "\(favs[indexPath.row])"
+        // - Attributions: https://stackoverflow.com/questions/34259654/how-to-change-text-size-in-tableview
+        cell.textLabel!.font = UIFont(name: cell.textLabel!.font.fontName, size:11)
         return cell
     }
     

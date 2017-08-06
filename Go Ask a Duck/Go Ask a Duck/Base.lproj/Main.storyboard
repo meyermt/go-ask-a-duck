@@ -40,8 +40,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SFJ-fn-yqT">
-                                <rect key="frame" x="0.0" y="64" width="703" height="660"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFJ-fn-yqT">
+                                <rect key="frame" x="0.0" y="0.0" width="702.5" height="724"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8h-0d-9n5">
@@ -49,8 +49,8 @@
                                 <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <barButtonItem style="plain" id="2Qt-kT-0xv">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A3A-7j-nh9">
-                                            <rect key="frame" x="20" y="7" width="683" height="30"/>
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A3A-7j-nh9">
+                                            <rect key="frame" x="20" y="7" width="684" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Favorite This Article">
                                                 <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -68,41 +68,47 @@
                                 <color key="barTintColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vlm-Ag-ZVa">
-                                <rect key="frame" x="321" y="334" width="60" height="57"/>
+                                <rect key="frame" x="0.0" y="64" width="701.5" height="660"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Yge-3E-1gs">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="57"/>
+                                        <rect key="frame" x="1" y="319.5" width="700.5" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Yge-3E-1gs" secondAttribute="bottom" id="AvK-nU-K5j"/>
-                                    <constraint firstItem="Yge-3E-1gs" firstAttribute="top" secondItem="Vlm-Ag-ZVa" secondAttribute="top" id="Je9-Cd-gQ0"/>
-                                    <constraint firstItem="Yge-3E-1gs" firstAttribute="leading" secondItem="Vlm-Ag-ZVa" secondAttribute="leading" id="M1f-Bf-MgA"/>
-                                    <constraint firstAttribute="trailing" secondItem="Yge-3E-1gs" secondAttribute="trailing" id="uhz-Cj-Xng"/>
+                                    <constraint firstItem="Yge-3E-1gs" firstAttribute="centerY" secondItem="Vlm-Ag-ZVa" secondAttribute="centerY" id="7KM-0s-6Ly"/>
+                                    <constraint firstItem="Yge-3E-1gs" firstAttribute="centerX" secondItem="Vlm-Ag-ZVa" secondAttribute="centerX" id="FTH-gH-LiV"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yge-3E-1gs" secondAttribute="trailing" id="pQK-E0-odM"/>
                                 </constraints>
+                                <variation key="heightClass=regular-widthClass=compact" preservesSuperviewLayoutMargins="NO"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favstar" translatesAutoresizingMaskIntoConstraints="NO" id="pe2-44-o3x">
+                                <rect key="frame" x="613" y="84" width="50" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="eOd-Lc-X5Q"/>
+                                    <constraint firstAttribute="width" constant="50" id="jzH-YN-iLq"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Vlm-Ag-ZVa" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="4aE-Df-Qfc"/>
                             <constraint firstAttribute="trailing" secondItem="SFJ-fn-yqT" secondAttribute="trailing" id="517-Md-YWI"/>
                             <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="SFJ-fn-yqT" secondAttribute="bottom" id="5fK-Yq-NDE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Vlm-Ag-ZVa" secondAttribute="trailing" constant="302" id="CCf-0n-ZkI"/>
+                            <constraint firstItem="pe2-44-o3x" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="20" id="CUX-lM-0AG"/>
+                            <constraint firstItem="Vlm-Ag-ZVa" firstAttribute="centerX" secondItem="n8h-0d-9n5" secondAttribute="centerX" id="JWG-kq-NlF"/>
+                            <constraint firstItem="Vlm-Ag-ZVa" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="Oj2-NG-ULF"/>
                             <constraint firstItem="SFJ-fn-yqT" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="Pbd-pA-vA9"/>
                             <constraint firstItem="n8h-0d-9n5" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="WzK-ON-E5d"/>
                             <constraint firstItem="SFJ-fn-yqT" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="top" id="Xgi-HP-S3G"/>
-                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="Vlm-Ag-ZVa" secondAttribute="bottom" constant="333" id="ZJz-kW-yTd"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="Vlm-Ag-ZVa" secondAttribute="bottom" id="j2R-g0-Zkp"/>
                             <constraint firstAttribute="bottom" secondItem="n8h-0d-9n5" secondAttribute="bottom" id="jue-mp-TYk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pe2-44-o3x" secondAttribute="trailing" constant="20" id="k8j-ff-0Xp"/>
                             <constraint firstAttribute="trailing" secondItem="n8h-0d-9n5" secondAttribute="trailing" id="omE-Fu-Jce"/>
-                            <constraint firstItem="Vlm-Ag-ZVa" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="301" id="uMb-HT-Kg0"/>
-                            <constraint firstItem="Vlm-Ag-ZVa" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="270" id="yLX-t9-QLw"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
-                        <barButtonItem key="leftBarButtonItem" title="Master" id="y5r-X8-J6u">
-                            <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="yo2-fv-E9W">
                             <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -116,6 +122,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="Yge-3E-1gs" id="Ivu-if-gBG"/>
                         <outlet property="activityView" destination="Vlm-Ag-ZVa" id="VJE-b0-uXR"/>
+                        <outlet property="favStar" destination="pe2-44-o3x" id="KGJ-fG-9qH"/>
                         <outlet property="webPage" destination="SFJ-fn-yqT" id="Y1L-Kb-N5k"/>
                     </connections>
                 </viewController>
@@ -133,7 +140,7 @@
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oKf-zh-b1X">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQR-fu-DaY">
                                 <rect key="frame" x="0.0" y="270" width="300" height="30"/>
@@ -251,7 +258,7 @@
         <scene sceneID="r7l-gg-dq7">
             <objects>
                 <navigationController id="vC3-pB-5Vb" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="DjV-YW-jjY">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
@@ -268,6 +275,9 @@
             <point key="canvasLocation" x="-45" y="129"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="favstar" width="25" height="23"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Tll-UG-LXB"/>
     </inferredMetricsTieBreakers>

@@ -15,7 +15,11 @@ class SharedNetworking {
     
     fileprivate init() {}
     
-    func searchDuck(query: String, completion: @escaping ((_ results: [[String:String]]) -> Void)) {
+    enum DuckAPIError: Error {
+        case badConnection
+    }
+    
+    func searchDuck(view: UIViewController, query: String, completion: @escaping ((_ results: [[String:String]]) -> Void)) {
         
         let duckQueryUrl = self.createDuckURL(query: query)
         
@@ -25,9 +29,16 @@ class SharedNetworking {
         
         let task = session.dataTask(with: duckQueryUrl as URL, completionHandler: { (data, response, error) -> Void in
             
-            // print("Response: \(String(describing: response))")
+            guard let _ = response else {
+                print("got nil response, updating viewer")
+                self.presentAlert(view: view)
+                return
+            }
+            
+            print("Response: \(String(describing: response))")
             
             guard ((response as! HTTPURLResponse).statusCode == 200) else {
+                self.presentAlert(view: view)
                 fatalError("Received bad response from server")
             }
             
@@ -78,4 +89,11 @@ class SharedNetworking {
         
         return duckUrlComponents.url! as NSURL
     }
+    
+    private func presentAlert(view: UIViewController) {
+        let alert = UIAlertController(title: "Request Failed", message: "Currently unable to connect to DucKDuckGo. Please try again later.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        view.present(alert, animated: true, completion: nil)
+    }
+
 }

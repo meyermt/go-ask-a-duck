@@ -16,8 +16,11 @@ class DetailViewController: UIViewController, DetailBookmarkDelegate, UIWebViewD
     @IBOutlet weak var webPage: UIWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var activityView: UIView!
+    @IBOutlet weak var favStar: UIImageView!
     
     let userDefaults = UserDefaults.standard
+    var isFav = false
+    var bookCall = false
     
     
     // MARK: Actions
@@ -47,10 +50,18 @@ class DetailViewController: UIViewController, DetailBookmarkDelegate, UIWebViewD
                 userDefaults.set(detail, forKey: "lastSearch")
             }
         }
+        if let favStar = favStar {
+            if isFav {
+                favStar.isHidden = false
+            } else {
+                favStar.isHidden = true
+            }
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Master", style: .plain, target: nil, action: nil)
         webPage.delegate = self
         activityView.isHidden = true
         configureView()
@@ -64,12 +75,19 @@ class DetailViewController: UIViewController, DetailBookmarkDelegate, UIWebViewD
     var detailItem: String? {
         didSet {
             // Update the view.
+            if bookCall {
+                isFav = true
+                bookCall = false
+            } else {
+                isFav = false
+            }
             configureView()
         }
     }
 
     func bookmarkPassedURL(url: String) {
         // add code for loading
+        bookCall = true
         detailItem = url
         configureView()
     }
@@ -77,16 +95,15 @@ class DetailViewController: UIViewController, DetailBookmarkDelegate, UIWebViewD
     // MARK: - Segues
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("calling seque prepare and segue name is \(String(describing: segue.identifier))")
-        //if segue.identifier == "segueToBookmarks" {
-            print("about to segue to bm")
+        if segue.identifier == "segueToBookmarks" {
             let bvc = segue.destination as! BookMarkViewController
+            bvc.view.sizeToFit()
+            bvc.updateViewConstraints()
             if let favs = userDefaults.value(forKey: "favs") as! [String]! {
-                print("found favs to set")
                 bvc.favs = favs
             }
             bvc.delegate = self
-        //}
+        }
     }
     
     // MARK: UIWebView Delegate methods

@@ -20,8 +20,6 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     let userDefaults = UserDefaults.standard
     
     // MARK: Actions
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +38,13 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         }
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
         searchFor(searchText)
-        if let lastSearchURL = userDefaults.value(forKey: "lastSearch") as! String! {
-            detailViewController?.detailItem = lastSearchURL
-        } else {
-            detailViewController?.detailItem = "https://duckduckgo.com/Apple"
+        // If this is run on iPhones, the detail view for some reason will not display button back to master
+        if UIDevice.current.model != "iPhone" {
+            if let lastSearchURL = userDefaults.value(forKey: "lastSearch") as! String! {
+                detailViewController?.detailItem = lastSearchURL
+            } else {
+                detailViewController?.detailItem = "https://duckduckgo.com/Apple"
+            }
         }
     }
 
@@ -118,7 +119,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
             self.tableView.reloadData()
         }
         
-        SharedNetworking.sharedInstance.searchDuck(query: query, completion: populateSearchResults(_:))
+        SharedNetworking.sharedInstance.searchDuck(view: self, query: query, completion: populateSearchResults(_:))
     }
 
     func dismissKeyboard() {
