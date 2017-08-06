@@ -75,6 +75,12 @@ class BookMarkViewController: UIViewController, UITableViewDelegate, UITableView
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let fav = favs[indexPath.row]
+        self.delegate?.bookmarkPassedURL(url: fav)
+        self.dismiss(animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

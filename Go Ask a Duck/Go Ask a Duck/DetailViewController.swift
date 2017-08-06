@@ -8,12 +8,14 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, DetailBookmarkDelegate {
+class DetailViewController: UIViewController, DetailBookmarkDelegate, UIWebViewDelegate {
     
     // MARK: Properties
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet weak var webPage: UIWebView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityView: UIView!
     
     let userDefaults = UserDefaults.standard
     
@@ -49,6 +51,8 @@ class DetailViewController: UIViewController, DetailBookmarkDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        webPage.delegate = self
+        activityView.isHidden = true
         configureView()
     }
 
@@ -83,6 +87,18 @@ class DetailViewController: UIViewController, DetailBookmarkDelegate {
             }
             bvc.delegate = self
         //}
+    }
+    
+    // MARK: UIWebView Delegate methods
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        activityView.isHidden = false
+        //activityIndicator.isAnimating = true
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        activityView.isHidden = true
+        //activityIndicator.isAnimating = false
     }
 
 }

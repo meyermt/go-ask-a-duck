@@ -40,8 +40,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFJ-fn-yqT">
-                                <rect key="frame" x="0.0" y="0.0" width="702.5" height="724"/>
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SFJ-fn-yqT">
+                                <rect key="frame" x="0.0" y="64" width="703" height="660"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8h-0d-9n5">
@@ -67,20 +67,42 @@
                                 </items>
                                 <color key="barTintColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vlm-Ag-ZVa">
+                                <rect key="frame" x="321" y="334" width="60" height="57"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Yge-3E-1gs">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="57"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Yge-3E-1gs" secondAttribute="bottom" id="AvK-nU-K5j"/>
+                                    <constraint firstItem="Yge-3E-1gs" firstAttribute="top" secondItem="Vlm-Ag-ZVa" secondAttribute="top" id="Je9-Cd-gQ0"/>
+                                    <constraint firstItem="Yge-3E-1gs" firstAttribute="leading" secondItem="Vlm-Ag-ZVa" secondAttribute="leading" id="M1f-Bf-MgA"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yge-3E-1gs" secondAttribute="trailing" id="uhz-Cj-Xng"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="SFJ-fn-yqT" secondAttribute="trailing" id="517-Md-YWI"/>
                             <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="SFJ-fn-yqT" secondAttribute="bottom" id="5fK-Yq-NDE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vlm-Ag-ZVa" secondAttribute="trailing" constant="302" id="CCf-0n-ZkI"/>
                             <constraint firstItem="SFJ-fn-yqT" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="Pbd-pA-vA9"/>
                             <constraint firstItem="n8h-0d-9n5" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="WzK-ON-E5d"/>
                             <constraint firstItem="SFJ-fn-yqT" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="top" id="Xgi-HP-S3G"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="Vlm-Ag-ZVa" secondAttribute="bottom" constant="333" id="ZJz-kW-yTd"/>
                             <constraint firstAttribute="bottom" secondItem="n8h-0d-9n5" secondAttribute="bottom" id="jue-mp-TYk"/>
                             <constraint firstAttribute="trailing" secondItem="n8h-0d-9n5" secondAttribute="trailing" id="omE-Fu-Jce"/>
+                            <constraint firstItem="Vlm-Ag-ZVa" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="301" id="uMb-HT-Kg0"/>
+                            <constraint firstItem="Vlm-Ag-ZVa" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="270" id="yLX-t9-QLw"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
+                        <barButtonItem key="leftBarButtonItem" title="Master" id="y5r-X8-J6u">
+                            <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="yo2-fv-E9W">
                             <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -92,6 +114,8 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Yge-3E-1gs" id="Ivu-if-gBG"/>
+                        <outlet property="activityView" destination="Vlm-Ag-ZVa" id="VJE-b0-uXR"/>
                         <outlet property="webPage" destination="SFJ-fn-yqT" id="Y1L-Kb-N5k"/>
                     </connections>
                 </viewController>
@@ -227,10 +251,13 @@
         <scene sceneID="r7l-gg-dq7">
             <objects>
                 <navigationController id="vC3-pB-5Vb" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="DjV-YW-jjY">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="JEX-9P-axG" kind="relationship" relationship="rootViewController" id="GKi-kA-LjT"/>
@@ -242,6 +269,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7xn-6E-2z3"/>
+        <segue reference="Tll-UG-LXB"/>
     </inferredMetricsTieBreakers>
 </document>
