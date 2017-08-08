@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
+        // Note using this proxy on its own did not seem to work
         UINavigationBar.appearance().backgroundColor = UIColor.purple
         UINavigationBar.appearance().tintColor = UIColor.yellow
         return true

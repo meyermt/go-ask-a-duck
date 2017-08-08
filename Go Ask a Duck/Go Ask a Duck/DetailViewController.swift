@@ -61,7 +61,6 @@ class DetailViewController: UIViewController, DetailBookmarkDelegate, UIWebViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Master", style: .plain, target: nil, action: nil)
         webPage.delegate = self
         activityView.isHidden = true
         configureView()
@@ -110,12 +109,10 @@ class DetailViewController: UIViewController, DetailBookmarkDelegate, UIWebViewD
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         activityView.isHidden = false
-        //activityIndicator.isAnimating = true
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         activityView.isHidden = true
-        //activityIndicator.isAnimating = false
     }
 
 }
