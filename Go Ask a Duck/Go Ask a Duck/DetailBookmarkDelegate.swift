@@ -8,6 +8,10 @@
 
 import Foundation
 
+/**
+ Action to take using URL from bookmark.
+
+ */
 protocol DetailBookmarkDelegate: class {
     func bookmarkPassedURL(url: String) -> Void
 }

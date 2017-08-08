@@ -19,6 +19,13 @@ class SharedNetworking {
         case badConnection
     }
     
+    /**
+     Primary method for searching using the DuckDuckAPI.
+     
+     - Parameter view: the view which should display any alerts from issues in the search
+     - Parameter query: query string to send
+     - Parameter completion: function to execute with results of the query
+     */
     func searchDuck(view: UIViewController, query: String, completion: @escaping ((_ results: [[String:String]]) -> Void)) {
         
         let duckQueryUrl = self.createDuckURL(query: query)

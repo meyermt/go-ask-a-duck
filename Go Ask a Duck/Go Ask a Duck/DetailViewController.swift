@@ -36,7 +36,10 @@ class DetailViewController: UIViewController, DetailBookmarkDelegate, UIWebViewD
     }
     
     
-
+    /**
+     Configures the detail view to be displayed to user.
+     
+     */
     func configureView() {
         // Update the user interface for the detail item.
         if let detail = detailItem {
