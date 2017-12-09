@@ -1,5 +1,5 @@
-# mpcs51030-2017-summer-assignment-7-meyermt
-mpcs51030-2017-summer-assignment-7-meyermt created by GitHub Classroom
+# Go Ask a Duck
+iOS App for searching using DuckDuckGo search engine.
 
 ## Overview
 
